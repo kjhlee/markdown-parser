@@ -16,6 +16,16 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
+            if(openParen == -1 || closeParen == -1)
+            {
+                System.out.println("Error no parenthesis");
+                break;
+            }
+            if(openBracket == -1 || closeBracket == -1)
+            {
+                System.out.println("Error: missing bracket somewhere");
+                break;
+            }
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
