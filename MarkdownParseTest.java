@@ -11,23 +11,45 @@ public class MarkdownParseTest {
         assertEquals(2, 1 + 1);
     }
     @Test
-    public void newTest() throws IOException{
+    public void testFile() throws IOException{
+
         Path fileName = Path.of("test-file.md");
         String fileCont = Files.readString(fileName);
-        ArrayList<String> toReturn = new ArrayList<String>();
+        ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
+        ArrayList<String> expected = new ArrayList<String>();
 
-        int currentIndex = 0;
-        while(currentIndex < fileCont.length())
-        {
-            int openBracket = fileCont.indexOf("[", currentIndex);
-            int closeBracket = fileCont.indexOf("]", openBracket);
-            int openParen = fileCont.indexOf("(", closeBracket);
-            int closeParen = fileCont.indexOf(")", openParen);
+        expected.add("https://something.com");
+        expected.add("some-thing.html");
 
-            toReturn.add(fileCont.substring(openParen + 1, closeParen));
-            currentIndex = closeParen + 1;
-        }
-        System.out.println(toReturn);
+        assertEquals(expected, toReturn);
+        
+    }
+    @Test
+    public void testFile2() throws IOException{
+
+        Path fileName = Path.of("test-file2.md");
+        String fileCont = Files.readString(fileName);
+        ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
+        ArrayList<String> expected = new ArrayList<String>();
+
+        expected.add("https://something.com");
+        expected.add("some-page.html");
+
+        assertEquals(expected, toReturn);
+        
+    }
+
+    @Test
+    public void testFile3() throws IOException{
+
+        Path fileName = Path.of("noBrack.md");
+        String fileCont = Files.readString(fileName);
+        ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
+        ArrayList<String> expected = new ArrayList<String>();
+
+        expected.add("https://youtube.com");
+
+        assertEquals(expected, toReturn);
         
     }
 
