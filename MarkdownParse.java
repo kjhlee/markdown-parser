@@ -11,27 +11,42 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
         int currentIndex = 0;
-        while(currentIndex < markdown.length()) {
+        while (currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            // if(openParen == -1 || closeParen == -1)
-            // {
-            //     System.out.println("Error no parenthesis");
-            //     break;
+            if (openParen == -1 || closeParen == -1) {
+                System.out.println("Error, invalid input: missing \"()\"");
+                break;
+            }
+            if (openBracket == -1 || closeBracket == -1) {
+                System.out.println("Error, invalid input: missing \"[]\"");
+                break;
+            }
+
+            // if (closeBracket + 1 != openParen) {
+            // System.out.println("Space in between the \"[] ()\"");
+            // System.out.println("Invalid input: linked file/link is not correctly
+            // formatted");
+            // break;
             // }
-            // if(openBracket == -1 || closeBracket == -1)
-            // {
-            //     System.out.println("Error: missing bracket somewhere");
-            //     break;
-            // }
+
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
 
         return toReturn;
     }
+
+    public static void main(String[] args) throws IOException {
+        Path fileName = Path.of(args[0]);
+        String content = Files.readString(fileName);
+        ArrayList<String> links = getLinks(content);
+        System.out.println(links);
+        System.out.println("timer test");
+    }
+}
 
 
     public static void main(String[] args) throws IOException {
