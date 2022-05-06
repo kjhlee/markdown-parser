@@ -24,34 +24,34 @@ public class MarkdownParseTest {
         assertEquals(expected, toReturn);
         
     }
-    @Test
-    public void testFile2() throws IOException{
+    // @Test
+    // public void testFile2() throws IOException{
 
-        Path fileName = Path.of("test-file2.md");
-        String fileCont = Files.readString(fileName);
-        ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
-        ArrayList<String> expected = new ArrayList<String>();
+    //     Path fileName = Path.of("test-file2.md");
+    //     String fileCont = Files.readString(fileName);
+    //     ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
+    //     ArrayList<String> expected = new ArrayList<String>();
 
-        expected.add("https://something.com");
-        expected.add("some-page.html");
+    //     expected.add("https://something.com");
+    //     expected.add("some-page.html");
 
-        assertEquals(expected, toReturn);
+    //     assertEquals(expected, toReturn);
         
-    }
+    // }
 
-    @Test
-    public void testFile3() throws IOException{
+    // @Test
+    // public void testFile3() throws IOException{
 
-        Path fileName = Path.of("noBrack.md");
-        String fileCont = Files.readString(fileName);
-        ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
-        ArrayList<String> expected = new ArrayList<String>();
+    //     Path fileName = Path.of("noBrack.md");
+    //     String fileCont = Files.readString(fileName);
+    //     ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
+    //     ArrayList<String> expected = new ArrayList<String>();
 
-        expected.add("https://youtube.com");
+    //     expected.add("https://youtube.com");
 
-        assertEquals(expected, toReturn);
+    //     assertEquals(expected, toReturn);
         
-    }
+    // }
 
 
 }
