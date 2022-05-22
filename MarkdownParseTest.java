@@ -6,23 +6,36 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 public class MarkdownParseTest {
 
-    @Test
-    public void addition() {
-        assertEquals(2, 1 + 1);
-    }
-    @Test
-    public void testFile() throws IOException{
+    // @Test
+    // public void addition() {
+    //     assertEquals(2, 1 + 1);
+    // }
+    // @Test
+    // public void testFile() throws IOException{
 
-        Path fileName = Path.of("test-file.md");
+    //     Path fileName = Path.of("test-file.md");
+    //     String fileCont = Files.readString(fileName);
+    //     ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
+    //     ArrayList<String> expected = new ArrayList<String>();
+
+    //     expected.add("https://something.com");
+    //     expected.add("some-thing.html");
+
+    //     assertEquals(expected, toReturn);
+        
+    // }
+
+    @Test
+    public void testSnippet1() throws IOException{
+        Path fileName = Path.of("snippet1.md");
         String fileCont = Files.readString(fileName);
         ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
         ArrayList<String> expected = new ArrayList<String>();
-
-        expected.add("https://something.com");
-        expected.add("some-thing.html");
+        expected.add("`google.com");
+        expected.add("google.com");
+        expected.add("ucsd.edu");
 
         assertEquals(expected, toReturn);
-        
     }
     // @Test
     // public void testFile2() throws IOException{
