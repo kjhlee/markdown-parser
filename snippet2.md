@@ -1,4 +1,4 @@
-[a [nested link](a.com)](b.com)
+[nested link](a.com)
 
 [a nested parenthesized url](a.com(()))
 

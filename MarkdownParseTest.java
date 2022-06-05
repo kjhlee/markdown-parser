@@ -31,9 +31,9 @@ public class MarkdownParseTest {
     //     String fileCont = Files.readString(fileName);
     //     ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
     //     ArrayList<String> expected = new ArrayList<String>();
-    //     expected.add("url.com");
     //     expected.add("`google.com");
     //     expected.add("google.com");
+    //     expected.add("ucsd.edu");
 
     //     assertEquals(expected, toReturn);
     // }
@@ -45,17 +45,17 @@ public class MarkdownParseTest {
     //     ArrayList<String> expected = new ArrayList<String>();
     //     expected.add("a.com");
     //     expected.add("a.com(())");
+    //     expected.add("example.com");
     //     assertEquals(expected, toReturn);
     // }
     @Test
     public void testSnippet3() throws IOException {
         Path fileName = Path.of("snippet3.md");
-        String fileCont = Files.readString(fileName);
-        ArrayList<String> toReturn = MarkdownParse.getLinks(fileCont);
-        ArrayList<String> expected = new ArrayList<String>();
-        expected.add("    https://www.twitter.com");
-        expected.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+        String content = Files.readString(fileName);
+        ArrayList<String> toReturn = MarkdownParse.getLinks(content);
 
+        ArrayList<String> expected = new ArrayList<>();
+        expected.add("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
 
         assertEquals(expected, toReturn);
     }
